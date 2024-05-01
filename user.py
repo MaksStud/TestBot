@@ -9,11 +9,11 @@ async def command_start(message: Message) -> None:
     await message.answer(user_text.hello_user_message(), reply_markup=kb.hello_kb)
 
 
-async def eho(message: Message) -> None:
+async def echo(message: Message) -> None:
     user_text = User_message_text()
     await message.answer(user_text.eho_user_message(message.text))
 
 
 def register(dp: Dispatcher):
     dp.message.register(command_start, Command('start'))
-    dp.message.register(eho)
+    dp.message.register(echo)
