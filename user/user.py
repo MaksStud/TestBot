@@ -13,5 +13,10 @@ async def command_start(message: Message) -> None:
     await message.answer(m.hello_message, reply_markup=kb.hello_kb)
 
 
+async def eho(message: Message) -> None:
+    await message.answer(message.text)
+
+
 def register(dp: Dispatcher):
     dp.message.register(command_start, Command('start'))
+    dp.message.register(eho)
