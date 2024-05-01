@@ -1,20 +1,9 @@
-import user
-from create_bot import bot, dp
+from create_bot import TOKEN, App
 import asyncio
 import logging
 import sys
 
-
-async def main():
-    try:
-        await dp.start_polling(bot, skip_updates=True)
-    except KeyboardInterrupt:
-        await bot.close()
-        await dp.storage.close()
-        await dp.storage.wait_closed()
-
-
 if __name__ == "__main__":
-    user.register(dp)
+    app = App(TOKEN)
     logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
-    asyncio.run(main())
+    asyncio.run(app.run())
